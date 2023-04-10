@@ -1,6 +1,8 @@
 <div>
-<!-- Modal -->
-<div wire:ignore.self class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- 
+  Start. Modal for adding a proverb. this is triggered by the add button below.
+-->
+<div wire:ignore.self class="modal fade" id="addProverbModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -31,18 +33,35 @@
       </div>
     </div>
 </div>
+<!-- 
+  End. Modal for adding a proverb. this is triggered by the add button below.
+-->
 @if($status == 0)
+<!-- 
+  Start. Add proverb button, reserved for admin 
+-->
 <div class="card" style="width:100%">
-  <button type="button" wire:click="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  <button type="button" wire:click="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProverbModal">
    Add Proverb
    </button> 
 </div>
+<!-- 
+  End. Add proverb button, reserved for admin 
+-->
+<!--
+  Start. Search bar for searching proverbs from the provided list
+-->
 <div class="card" style="width:100%">
  <input type="text"  class="form-control" placeholder="Search" wire:model="searchWord" />
 </div>
+<!--
+  Start. Search bar for searching proverbs from the provided list
+-->
 @if(count($proverbs)>0)
     @foreach($proverbs as $proverb)
-<!--Modal add comment to proverb -->
+<!--
+  Start. Modal add comment to proverb 
+-->
 <div wire:ignore.self class="modal fade" id="commentModal{{$proverb->id}}" tabindex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -67,11 +86,14 @@
     </div>
   </div>
 </div>
-<!-- end add modal to comment -->
+<!-- end. add modal to comment 
+-->
             <div   class="card" style="width:100%; margin-top:2px;">
-                <ul wire:click="view({{$proverb->id}})" class="list-group list-group-flush">
-                  <li class="list-group-item">{{$proverb->name}}</li>
+              <a href="{{route('proverb-view',$proverb->id)}}">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{$proverb->name}}</li>
                 </ul>
+              </a>  
                 <div class="card-footer">
                     <div class="row">
                        <span  class="col-3" >
@@ -155,6 +177,6 @@
          </div>
     </div>   
 @else
-   
+  <p>hello</p>
 @endif
 </div>

@@ -70,7 +70,7 @@ class ProverbShow extends Component
     public function view($proverbId){
         $this->status = 1;
         $this->proverb = Proverbs::findOrFail($proverbId);
-        //return view('livewire.proverbs.view');
+       // return view('livewire.proverbs.view');
     }
 
     public function resetFields(){

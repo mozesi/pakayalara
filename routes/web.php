@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Livewire\Languages;
+use App\Http\Livewire\Comments;
 use App\Http\Livewire\Proverbs;
 
 use Illuminate\Support\Facades\Route;
@@ -30,7 +31,7 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/languages', Languages\Languages::class);
     Route::get('/proverbs', Proverbs\ProverbShow::class);
-    Route::get('/proverbs/{id}', Proverbs\ProverbShow::class)->name('proverb-view');
+    Route::get('/proverbs/{id}',Comments\Comments::class)->name('proverb-view');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
