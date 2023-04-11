@@ -7,6 +7,8 @@ use App\Models\Proverb as Proverb;
 use App\Models\ProverbComment as Comment;
 use Illuminate\Support\Facades\Auth;
 
+use App\Models\CommentReaction as CommentReaction;
+
 class Comments extends Component
 {   
     public $proverb, $proverb_id,$comment_description;
@@ -17,8 +19,7 @@ class Comments extends Component
 
     ];
 
-    public function mount($id)
-    {   
+    public function mount($id){   
         $this->proverb = Proverb::findOrFail($id);
         return view('livewire.comments.comments');
     }
@@ -40,6 +41,14 @@ class Comments extends Component
     }
 
     public function resetFields(){
-
+        $this->comment_description ="";
     }
+    
+    public function likeComment($id){
+        CommentReaction::create([
+            'user_id' => Auth::id(),
+            'proverb_comment_id' =>$id,
+        ]);
+    }
+
 }

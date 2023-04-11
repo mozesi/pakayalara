@@ -37,7 +37,7 @@
                   </a>
                   </span>
                   <span  class="col-3" >
-                    <a title="{{count($proverb->comments)}} likes"> 
+                    <a wire:model.click ="likeProverb()"title="{{count($proverb->reactions)}} likes"> 
                       <i class="bi bi-heart">0</i>                         
                     </a>
                   </span>
@@ -59,7 +59,22 @@
                <div class="card-footer">
                 @foreach($proverb->comments as $comment)
                   <div class="row">
-                      {{$comment->comment_description}}
+                      <div   class="card" style="width:100%; margin-top:2px;">
+                        <a>
+                          <ul class="list-group list-group-flush">
+                              <li class="list-group-item">{{$comment->comment_description}}</li>
+                          </ul>
+                        </a>  
+                          <div class="card-footer">
+                              <div class="row">
+                                  <span  class="col-3" >
+                                    <a wire:click ="likeComment({{$comment->id}})"title="{{count($comment->reactions)}} likes"> 
+                                      <i class="bi bi-heart">{{count($comment->reactions)}}</i>                         
+                                    </a>
+                                  </span>
+                              </div>
+                            </div>
+                      </div>  
                   </div>
                  @endforeach
                </div>

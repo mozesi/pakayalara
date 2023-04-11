@@ -11,20 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('proverb_comments', function (Blueprint $table) {
+        Schema::create('comment_reactions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('comment_description');
             $table->softDeletesTz($column = 'deleted_at', $precision = 0);
             $table->timestamps();
         });
 
-        Schema::table('proverb_comments', function (Blueprint $table) {
-            $table->unsignedBigInteger('proverb_id');
+        Schema::table('comment_reactions', function (Blueprint $table) {
+            $table->unsignedBigInteger('proverb_comment_id');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('proverb_id')->references('id')->on('proverbs');
+            $table->foreign('proverb_comment_id')->references('id')->on('proverb_comments');
             $table->foreign('user_id')->references('id')->on('users');
         });
-        
     }
 
     /**
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('proverb_comments');
+        Schema::dropIfExists('comment_reactions');
     }
 };

@@ -102,8 +102,8 @@
                         </a>
                         </span>
                         <span  class="col-3" >
-                          <a href="{{route('proverb-view',$proverb->id)}}"> 
-                            <i class="bi bi-heart">0</i>                         
+                          <a wire:click ="likeProverb({{$proverb->id}})" title="{{count($proverb->reactions)}} likes"> 
+                            <i class="bi bi-heart">{{count($proverb->reactions)}}</i>                         
                           </a>
                         </span>
                         <span  class="col-3" >

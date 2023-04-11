@@ -27,4 +27,10 @@ class Proverb extends Model
         return $this->hasMany(ProverbComment::class);
 
     }
+
+    public function reactions(){
+
+        return $this->hasMany(ProverbReaction::class);
+
+    }
 }

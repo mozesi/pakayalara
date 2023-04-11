@@ -10,6 +10,7 @@ use App\Models\Proverb as Proverbs;
 use App\Models\Language as Languages;
 use App\Models\ProverbMeaning as Meanings;
 use App\Models\ProverbComment as Comments;
+use App\Models\ProverbReaction as ProverbReaction;
 
 class ProverbShow extends Component
 {
@@ -80,6 +81,13 @@ class ProverbShow extends Component
         $this->local_sentence="";
         $this->en_sentence="";
         $this->proverb_id="";
+    }
+
+    public function likeProverb($id){
+        ProverbReaction::create([
+            'user_id' => Auth::id(),
+            'proverb_id' => $id,
+        ]);
     }
 
 }

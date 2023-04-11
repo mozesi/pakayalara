@@ -5,19 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ProverbComment extends Model
+class CommentReaction extends Model
 {
     use HasFactory;
 
     protected $fillable =[
-        'comment_description','proverb_id','user_id'
+        'proverb_comment_id','user_id'
     ];
 
     public $timestamps = true;
-
-    public function reactions(){
-
-        return $this->hasMany(CommentReaction::class);
-
-    }
 }
