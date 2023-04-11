@@ -8,6 +8,7 @@ use App\Models\ProverbComment as Comment;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\CommentReaction as CommentReaction;
+use App\Models\ProverbReaction as ProverbReaction;
 
 class Comments extends Component
 {   
@@ -58,6 +59,23 @@ class Comments extends Component
             CommentReaction::create([
                 'user_id' => Auth::id(),
                 'proverb_comment_id' =>$id,
+            ]);
+        }
+
+        $this->mount($this->proverb_id);
+    }
+
+    public function likeProverb($id){
+        $likes = ProverbReaction::where('user_id','=', Auth::id())
+        ->where('proverb_id','=', $id)->get();
+        if(count($likes) >= 1){
+            ProverbReaction::where('user_id','=', Auth::id())
+            ->where('proverb_id','=', $id)->delete();
+        }
+        else{
+            ProverbReaction::create([
+                'user_id' => Auth::id(),
+                'proverb_id' => $id,
             ]);
         }
 

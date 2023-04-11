@@ -38,7 +38,7 @@
                   </span>
                   <span  class="col-3" >
                     @if(Auth::check())
-                      <a wire:model.click ="likeProverb()" title="{{count($proverb->reactions)}} marks"> 
+                      <a wire:click ="likeProverb({{$proverb->id}})" title="{{count($proverb->reactions)}} marks"> 
                         <i class="bi bi-check2"">{{count($proverb->reactions)}} </i>                         
                     </a>
                     @else
@@ -46,11 +46,6 @@
                         <i class="bi bi-check2">{{count($proverb->reactions)}} </i>                         
                       </a>
                     @endif
-                  </span>
-                  <span  class="col-3" >
-                    <a class="col-4" href="{{route('proverb-view',$proverb->id)}}">
-                      <i class="bi bi-share"></i>
-                    </a>
                   </span>
                 </div>
              </ul>
@@ -81,7 +76,7 @@
                                   <span  class="col-3" >
                                     @if(Auth::check())
 
-                                    <a wire:click ="likeComment({{$comment->id}})"title="{{count($comment->reactions)}} marks"> 
+                                    <a wire:click ="likeComment({{$comment->id}})" title="{{count($comment->reactions)}} marks"> 
                                         <i class="bi bi-check2">{{count($comment->reactions)}}</i>                         
                                     </a>
                                     @else
