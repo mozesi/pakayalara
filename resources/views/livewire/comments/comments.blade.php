@@ -1,5 +1,5 @@
 <div> 
-    <div wire:ignore.self class="modal fade" id="commentModal{{$proverb->id}}" tabindex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
+      <div wire:ignore.self class="modal fade" id="commentModal{{$proverb->id}}" tabindex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -37,9 +37,15 @@
                   </a>
                   </span>
                   <span  class="col-3" >
-                    <a wire:model.click ="likeProverb()"title="{{count($proverb->reactions)}} likes"> 
-                      <i class="bi bi-heart">0</i>                         
+                    @if(Auth::check())
+                      <a wire:model.click ="likeProverb()" title="{{count($proverb->reactions)}} marks"> 
+                        <i class="bi bi-check2"">{{count($proverb->reactions)}} </i>                         
                     </a>
+                    @else
+                    <a title="{{count($proverb->reactions)}} marks"> 
+                        <i class="bi bi-check2">{{count($proverb->reactions)}} </i>                         
+                      </a>
+                    @endif
                   </span>
                   <span  class="col-3" >
                     <a class="col-4" href="{{route('proverb-view',$proverb->id)}}">
@@ -53,8 +59,13 @@
                      <textarea wire:model="comment_description" placeholder="Comment" style="width:100%">
                      </textarea> @error('comment_description') {{$message}}@enderror
                      @error('proverb_id') {{$message}}@enderror
-                     <button class="btn btn-primary" wire:click.prevent="saveComment({{$proverb->id}})">comment</button>
-               </form>
+                     @if(Auth::check())
+ <button class="btn btn-primary" wire:click.prevent="saveComment({{$proverb->id}})">comment</button>                   
+                     @else
+                     <button disabled class="btn btn-primary" wire:click.prevent="saveComment({{$proverb->id}})">comment</button>
+                       
+                     @endif
+                    </form>
             </div>
                <div class="card-footer">
                 @foreach($proverb->comments as $comment)
@@ -68,9 +79,16 @@
                           <div class="card-footer">
                               <div class="row">
                                   <span  class="col-3" >
-                                    <a wire:click ="likeComment({{$comment->id}})"title="{{count($comment->reactions)}} likes"> 
-                                      <i class="bi bi-heart">{{count($comment->reactions)}}</i>                         
+                                    @if(Auth::check())
+
+                                    <a wire:click ="likeComment({{$comment->id}})"title="{{count($comment->reactions)}} marks"> 
+                                        <i class="bi bi-check2">{{count($comment->reactions)}}</i>                         
                                     </a>
+                                    @else
+                                    <a title="{{count($comment->reactions)}} marks"> 
+                                        <i class="bi bi-check2">{{count($comment->reactions)}}</i>                         
+                                      </a>
+                                    @endif
                                   </span>
                               </div>
                             </div>
