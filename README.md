@@ -17,7 +17,7 @@ Pakaya is a web application developed to among other things:
 
 ### Developer
 
-<p align="center">
+<p align="left">
 <a href="https://mosesmsukwa.com/"><img src="https://github.com/mozesi/pakayalara/mozesi.png" alt="Moses"></a>
 </p>
 - **[Moses Msukwa](https://mosesmsukwa.com/)**
