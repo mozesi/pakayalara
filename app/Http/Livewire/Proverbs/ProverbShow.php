@@ -27,13 +27,31 @@ class ProverbShow extends Component
         'name' => 'required',
         'language_id' =>'required'
     ];
-    public function render(){   
-        $searchWord = '%'.$this->searchWord.'%';
 
-        $this->proverbs  = Proverbs::where('name','like',$searchWord)->get();
-        $this->languages = Languages::all();
+    
+  public $lanId;
+    public function render(){   
+        $lanId = \Route::current()->parameter('id');
+         if($lanId >=1){
+            $this->lanId = $lanId;
+            $searchWord = '%'.$this->searchWord.'%';
+
+            $this->proverbs  = Proverbs::
+            where('language_id','=',$this->lanId)->
+            where('name','like',$searchWord)->get();
+            $this->languages = Languages::all();
+         }else{
+            $searchWord = '%'.$this->searchWord.'%';
+
+            $this->proverbs  = Proverbs::
+            where('language_id','=',$this->lanId)->
+            where('name','like',$searchWord)->get();
+            $this->languages = Languages::all();
+         }
+
+     //echo $lanId;
         return view('livewire.proverbs.proverbs');
-    }
+    } 
     public function store(){
         $this->validate($this->rules);
         Proverbs::create([

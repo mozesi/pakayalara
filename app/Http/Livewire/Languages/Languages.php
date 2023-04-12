@@ -28,10 +28,6 @@ class Languages extends Component
         return view('livewire.languages.languages');
     }
     
-    //public function mount($id){
-
-    //}
-
     public function resetFields(){
         $this->name ='';
         $this->code ='';

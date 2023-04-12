@@ -51,7 +51,7 @@
 <!--
   Start. Search bar for searching proverbs from the provided list
 -->
-<div class="card" style="width:100%">
+<div class="input-group" style="width:100%">
  <input type="text"  class="form-control" placeholder="Search" wire:model="searchWord" />
 </div>
 <!--
@@ -89,7 +89,7 @@
 <!-- end. add modal to comment 
 -->
             <div   class="card" style="width:100%; margin-top:2px;">
-              <a href="{{route('proverb-view',$proverb->id)}}">
+              <a href='{{url("proverbs/$language->code/$proverb->id")}}'>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">{{$proverb->name}}</li>
                 </ul>
@@ -107,7 +107,7 @@
                           </a>
                         </span>
                         <span  class="col-3" >
-                          <a class="col-4" href="{{route('proverb-view',$proverb->id)}}">
+                          <a class="col-4" href="#">
                             <i class="bi bi-share"></i>
                           </a>
                         </span>
