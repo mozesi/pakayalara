@@ -14,4 +14,11 @@ class Language extends Model
     ];
 
     public $timestamps = true;
+
+
+    public function proverbs(){
+
+        return $this->hasMany(Proverb::class);
+
+    }
 }

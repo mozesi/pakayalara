@@ -1,3 +1,4 @@
+
 <div>
 <!-- 
   Start. Modal for adding a proverb. this is triggered by the add button below.

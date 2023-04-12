@@ -20,9 +20,14 @@
         @include('layouts.navigation')
 
             <!-- Page Content -->
-            <main class="container-fluid">
+            <main class="container">
                 <div class="row">
-                    @include('layouts.body')
+                    <div class="col-2">
+                        @include('layouts.leftbar')
+                    </div>
+                    <div class="col-6">
+                        @include('layouts.body')
+                    </div>
                 </div>
             </main>
         @livewireScripts

@@ -28,28 +28,22 @@ class ProverbShow extends Component
         'language_id' =>'required'
     ];
 
-    
-  public $lanId;
+    public $lanId;
     public function render(){   
         $lanId = \Route::current()->parameter('id');
+        $searchWord = '%'.$this->searchWord.'%';
+
          if($lanId >=1){
             $this->lanId = $lanId;
-            $searchWord = '%'.$this->searchWord.'%';
-
             $this->proverbs  = Proverbs::
             where('language_id','=',$this->lanId)->
             where('name','like',$searchWord)->get();
-            $this->languages = Languages::all();
          }else{
-            $searchWord = '%'.$this->searchWord.'%';
-
             $this->proverbs  = Proverbs::
             where('language_id','=',$this->lanId)->
             where('name','like',$searchWord)->get();
-            $this->languages = Languages::all();
          }
-
-     //echo $lanId;
+        $this->languages = Languages::all();
         return view('livewire.proverbs.proverbs');
     } 
     public function store(){
@@ -91,7 +85,6 @@ class ProverbShow extends Component
         $this->proverb = Proverbs::findOrFail($proverbId);
        // return view('livewire.proverbs.view');
     }
-
     public function resetFields(){
         $this->name ="";
         $this->language_id ="";
@@ -100,7 +93,6 @@ class ProverbShow extends Component
         $this->en_sentence="";
         $this->proverb_id="";
     }
-
     public function likeProverb($id){
         $likes = ProverbReaction::where('user_id','=', Auth::id())
         ->where('proverb_id','=', $id)->get();
@@ -115,5 +107,4 @@ class ProverbShow extends Component
             ]);
         }
     }
-
 }
