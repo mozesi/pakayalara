@@ -41,9 +41,10 @@
                 </div>
             </div>
         </nav>
-
+       
         <section class="bg-dark text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
             <div class="container">
+                @include('layouts.Modals.login')
                 <div class="d-sm-flex align-items-center justify-content-inbetween">
                     <div>
                         <h1>
@@ -54,17 +55,13 @@
                             Tamupokelelani Tamupokelelani Tamupokelelani Tamupokelelani
                         </p>
                         <div class="mt-16">
-                            @livewire('landing-page.landing-page')
+                           {{-- @livewire('landing-page.landing-page') --}}
+                           <button data-bs-toggle="modal" data-bs-target="#loginModal" class="btn btn-primary">Get Started</button>
+                           <a href="/home/guest" class="btn btn-primary">Guest User</a>
+                           
                         </div>
                     </div>
                     <img class="img-fluied w-50 d-none d-sm-block" src="{{URL::asset('/img/africa.jpg')}}" alt="">
-                </div>
-            </div>
-        </section>
-        <section class="bg-primary text-light p-5">
-            <div class="container">
-                <div class="d-md-flex  justify-content-between align-items-center">
-                   <h3 class="mb-3 md-md-0">sign up</h3>
                 </div>
             </div>
         </section>

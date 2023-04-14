@@ -24,14 +24,13 @@ Route::get('/', function () {
 //Route::get('/main/{id}', [Languages\Languages::class,'mount'])->name('home.page');
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-Route::middleware('auth')->group(function () {
-    Route::get('/languages', Languages\Languages::class);
-    Route::get('/language/{code}/proverbs/{id}', Proverbs\ProverbShow::class);
-    Route::get('/proverbs/{language}/{id}',Comments\Comments::class)->name('proverbs');
+Route::get('/home/guest', Proverbs\ProverbShow::class);//->middleware(['auth', 'verified'])->name('home');
+Route::get('/languages', Languages\Languages::class);
+Route::get('/language/{code}/proverbs/{id}', Proverbs\ProverbShow::class);
+Route::get('/proverbs/{language}/{id}',Comments\Comments::class)->name('proverbs');
 
+Route::middleware('auth')->group(function () {
+    Route::get('/home/{user}', Proverbs\ProverbShow::class);
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

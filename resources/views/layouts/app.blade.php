@@ -17,8 +17,9 @@
         @livewireStyles
     </head>
     <body class="font-sans antialiased bg-body-tertiary"> 
+        @include('layouts.Modals.register')
+        @include('layouts.Modals.login')
         @include('layouts.navigation')
-
             <!-- Page Content -->
             <main class="container">
                 <div class="row">

@@ -27,6 +27,9 @@ class ProverbShow extends Component
         'name' => 'required',
         'language_id' =>'required'
     ];
+    public $commentRules =[
+        'comment_description' => 'required'
+    ];
 
     public $lanId;
     public function render(){   
@@ -71,14 +74,13 @@ class ProverbShow extends Component
         return redirect()->to('/');
     }
     public function saveComment($commentedProverbId){
+        $this->validate($this->commentRules);
         Comments::create([
             'comment_description' => $this->comment_description,
             'user_id' => Auth::id(),
             'proverb_id' => $commentedProverbId,
         ]);
-
         $this->resetFields();
-      //  return redirect()->to('/proverbs');
     }
     public function view($proverbId){
         $this->status = 1;
