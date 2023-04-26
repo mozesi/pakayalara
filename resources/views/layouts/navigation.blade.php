@@ -44,8 +44,8 @@
           </x-slot>
       </x-dropdown>
       @else
-      <button data-bs-toggle="modal" data-bs-target="#registerModal" class="btn btn-primary">Sign Up</button>
-      <button data-bs-toggle="modal" data-bs-target="#loginModal" class="btn btn-primary">Log In</button>
+      <a data-bs-toggle="modal" data-bs-target="#registerModal" >Sign Up</a>
+      <a data-bs-toggle="modal" data-bs-target="#loginModal" >Log In</a>
       @endif
   </div>
   </nav>

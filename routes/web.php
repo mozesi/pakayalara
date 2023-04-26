@@ -21,8 +21,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-//Route::get('/main/{id}', [Languages\Languages::class,'mount'])->name('home.page');
-
 
 Route::get('/home/guest', Proverbs\ProverbShow::class);//->middleware(['auth', 'verified'])->name('home');
 Route::get('/languages', Languages\Languages::class);
