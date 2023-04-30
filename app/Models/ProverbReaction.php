@@ -10,7 +10,7 @@ class ProverbReaction extends Model
     use HasFactory;
 
     protected $fillable =[
-        'proverb_id','user_id','reaction_id'
+        'proverb_id','user_id'
     ];
 
     public $timestamps = true;

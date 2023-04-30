@@ -95,7 +95,7 @@ class ProverbShow extends Component
         $this->en_sentence="";
         $this->proverb_id="";
     }
-    public function likeProverb($id,$reaction_id){
+    public function likeProverb($id){
         $likes = ProverbReaction::where('user_id','=', Auth::id())
         ->where('proverb_id','=', $id)->get();
 
@@ -107,7 +107,6 @@ class ProverbShow extends Component
        ProverbReaction::create([
                     'user_id' => Auth::id(),
                     'proverb_id' => $id,
-                    'reaction_id' => $reaction_id,
             ]);
     }
 }

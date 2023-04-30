@@ -18,12 +18,13 @@ return new class extends Migration
             $table->timestamps();
         });
         /**
-         * adding foreign key in the proverb_reactions table
-         */
-        Schema::table('proverb_reactions', function (Blueprint $table) {
-            $table->unsignedBigInteger('reaction_id');
-            $table->foreign('reaction_id')->references('id')->on('reactions');
-        });
+        * adding foreign key in the proverb_reactions table
+        *
+        *Schema::table('proverb_reactions', function (Blueprint $table) {
+        *   $table->unsignedBigInteger('reaction_id');
+        *  $table->foreign('reaction_id')->references('id')->on('reactions');
+        *});
+        */
     }
 
     /**
