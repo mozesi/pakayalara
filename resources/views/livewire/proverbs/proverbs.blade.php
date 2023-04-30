@@ -89,8 +89,13 @@
                           </a>
                         </span>
                         <span  class="col-3" >
-                          <a wire:click ="likeProverb({{$proverb->id}})"> 
-                            <i class="bi bi-heart">{{count($proverb->reactions)}}</i>                         
+                          <a wire:click ="likeProverb({{$proverb->id}},1)"> 
+                            <i class="bi bi-hand-thumbs-up">{{count($proverb->reactions)}}</i>                
+                          </a>
+                        </span>
+                        <span  class="col-3" >
+                          <a wire:click ="likeProverb({{$proverb->id}},2)"> 
+                            <i class="bi bi-hand-thumbs-down">{{$proverb->reactions}}</i>                
                           </a>
                         </span>
                       @else
