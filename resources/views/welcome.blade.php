@@ -18,8 +18,6 @@
             including the top navigation and modals for account registration and login
         --}}
         @include('layouts.navigation')
-        @include('layouts.Modals.login')
-        @include('layouts.Modals.register')
         <section class="container">
             <div class="row m-4">
                 <div class="col-8 p-4">
@@ -31,8 +29,8 @@
                                 You can also share your understanding of a proverb and Up vote someone's insights of a proverb. Have fun!
                         </p>
                         <div class="">
-                            <button data-bs-toggle="modal" data-bs-target="#loginModal" class="btn btn-primary">Sign In</button>
-                            <a href="/home/guest" class="btn btn-primary">Proceed as a guest</a>            
+                            <a href="{{ route('login') }}" class="btn btn-primary">Log In</a>
+                            <a href="/home/guest" class="btn btn-primary">Proceed as a guest</       
                         </div>
                 </div>
                 <div class="col-4">
